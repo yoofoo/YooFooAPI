@@ -3,7 +3,7 @@ import {Express, Request, Response} from "express"
 function routes(app: Express) {
     /**
     * @openapi
-    * /api/user:
+    * /user:
     *  post:
     *     tags:
     *     - Healthcheck
@@ -12,7 +12,9 @@ function routes(app: Express) {
     *       200:
     *         description: App is up and running
     */
-    app.post("/api/user", (req: Request, res: Response) => res.sendStatus(200));
+    app.post("/user", (req: Request, res: Response) => {
+        res.sendStatus(200);
+    });
 }
 
 export default routes;
