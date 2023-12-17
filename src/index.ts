@@ -9,7 +9,6 @@ const port = process.env.PORT || PORT;
 app.use(express.json());
 
 app.get('/', (req: Request, res: Response) => {
-    console.log('Hello, TypeScript Express!');
     res.send('Hello, TypeScript Express!');
   });
 
