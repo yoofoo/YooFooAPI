@@ -5,22 +5,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+const package_json_1 = require("../../package.json");
 //import log from './logger'
 const options = {
     definition: {
         openapi: "3.0.0",
         info: {
-            title: "Library API",
-            version: "1.0.0",
-            description: "A simple Express Library API",
+            title: "YooFoo API Documentation",
+            version: package_json_1.version,
         },
-        servers: [
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: "http",
+                    scheme: "bearer",
+                    bearerFormat: "JWT",
+                },
+            },
+        },
+        security: [
             {
-                url: "http://localhost:3000",
+                bearerAuth: [],
             },
         ],
     },
-    apis: ["./routes/*.js"],
+    apis: ["./src/routes/*.js"],
 };
 const swaggerSpec = (0, swagger_jsdoc_1.default)(options);
 function swaggerDocs(app, port) {

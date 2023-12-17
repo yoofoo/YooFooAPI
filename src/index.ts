@@ -1,5 +1,6 @@
-import express, { Request, Response } from 'express';
+import express, {Request, Response } from 'express';
 import swaggerDocs from './utils/swagger'
+import routes from "./routes/routes"
 
 const PORT = 3000;
 const app = express();
@@ -12,8 +13,8 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Hello, TypeScript Express!');
   });
 
-swaggerDocs(app, PORT);
-
-app.listen(port, () => {
+app.listen(port, async () => {
   console.log(`Server running at http://localhost:${port}`);
+  routes(app);
+  swaggerDocs(app, PORT);
 });
