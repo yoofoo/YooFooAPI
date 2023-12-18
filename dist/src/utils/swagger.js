@@ -21,15 +21,21 @@ const options = {
                     scheme: "bearer",
                     bearerFormat: "JWT",
                 },
+                ApiKeyAuth: {
+                    type: "apiKey",
+                    in: "header",
+                    name: "X-API-Key"
+                }
             },
         },
         security: [
             {
                 bearerAuth: [],
+                ApiKeyAuth: [],
             },
         ],
     },
-    apis: ["./src/routes/*.js"],
+    apis: ["./src/routes/*.ts"],
 };
 const swaggerSpec = (0, swagger_jsdoc_1.default)(options);
 function swaggerDocs(app, port) {

@@ -20,15 +20,21 @@ const options: swaggerJsdoc.Options = {
 			scheme: "bearer",
 			bearerFormat: "JWT",
 		  },
+		  ApiKeyAuth: {
+			type: "apiKey",
+			in: "header",
+			name: "X-API-Key"
+		  }
 		},
 	  },
 	  security: [
 		{
 		  bearerAuth: [],
+		  ApiKeyAuth: [],
 		},
 	  ],
 	},
-	apis: ["./src/routes/routes.ts"],
+	apis: ["./src/routes/*.ts"],
 };
 
 const swaggerSpec = swaggerJsdoc(options)
